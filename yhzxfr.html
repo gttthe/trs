@@ -1,0 +1,801 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="SiteName" content="山西省人民政府门户网站">
+    <meta name="SiteDomain" content="www.shanxi.gov.cn">
+    <meta name="SiteIDCode" content="1400000045">
+    <meta name="google" value="notranslate">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="apple-touch-icon" href="../yhzx/images/sxszf-gh.png?v1">
+    <link rel="icon" href="../yhzx/images/sxszf-gh.png?v1">
+    <title>用户中心 - 山西省人民政府</title>
+    <meta name="description"
+        content="山西省人民政府网是山西省和山西省各部门，以及全省各市、县人民政府在互联网上发布政府信息和提供在线服务的综合平台。山西省人民政府网现开通“省政府、省长、政务、服务、互动、数据、省情”等栏目，第一时间权威发布山西省相关重要会议、重要活动、重大决策信息，同时面向社会提供与政府业务相关的服务，建设基于互联网的政府与公众互动交流新渠道。">
+    <meta name="keywords" content="山西;山西省;山西省政府;山西省人民政府;山西省人民政府网站;山西政府网;山西省办公厅">
+    <link href="../yhzx/images/base.css" rel="stylesheet" type="text/css" />
+    <link href="../yhzx/images/index.css" rel="stylesheet" type="text/css" />
+    <link href="../yhzx/images/theme-default.css" rel="stylesheet" type="text/css" id="themeFile">
+    <link href="../yhzx/images/sxszf.slide.min.css" rel="stylesheet" type="text/css">
+    <link href="../yhzx/images/animate.min.css" rel="stylesheet" type="text/css">
+	<link href="../yhzx/images/yhzx.css" rel="stylesheet" type="text/css">
+    <!-- <link href="images/pc.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" type="text/css" href="../yhzx/images/pc.css"
+        media="screen and (min-width:1025px) and (max-width:1400px) " />
+    <!-- <link rel="stylesheet" type="text/css" media="screen and (min-device-width:1126px) and (max-device-width:1400px)" href="images/pc.css"> -->
+    <link rel="stylesheet" type="text/css" href="../yhzx/images/mobile.css"
+        media="screen and (max-width:767px) and (orientation:portrait)" />
+    <link rel="stylesheet" type="text/css" href="../yhzx/images/mobile_index.css"
+        media="screen and (max-width:767px) and (orientation:portrait)" />
+	<link rel="stylesheet" type="text/css" href="../yhzx/images/yhzx_s.css"
+        media="screen and (max-width:767px) and (orientation:portrait)" />
+        <script src="../yhzx/images/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="images/respond.min.js"></script>
+    <![endif]-->
+    <!-- ↓不同栏目调用不同说明 -->
+    <meta name="ColumnName" content="首页">
+    <meta name="ColumnDescription" content="山西省人民政府门户网站首页。">
+    <meta name="ColumnKeywords" content="山西,政府网站,中国">
+    <meta name="ColumnType" content="网站首页">
+    <!-- ↑不同栏目调用不同说明 -->
+</head>
+
+<body>
+
+<script>
+$(document).ready(function(){
+
+	 
+     	var REPRESENTATIVE_NAME;
+     	var LOGIN_NAME;
+     	var  CORPORATE_NAME;
+     	var CORPORATE_NAME_DISP;
+     	var	REPRESENTATIVE_NAME_DISP;
+     	var	LOGIN_NAME_DISP
+
+
+
+
+
+
+$.ajax({
+            type: "GET",
+            url: "http://183.201.253.164:6688/sso/GetUserInfo",
+            success: function (data) {
+              //var json=toJson(data);
+		var json=data;	
+//var json=JSON.parse(data);
+//真实公司名
+  CORPORATE_NAME=json.CORPORATE_NAME;
+  CORPORATE_NAME_DISP=json.CORPORATE_NAME_DISP;
+
+//账号
+  LOGIN_NAME=json.LOGIN_NAME;
+  LOGIN_NAME_DISP=json.LOGIN_NAME_DISP;
+  
+
+
+  //组织机构代码
+  var CORPORATE_CODE=json.CORPORATE_CODE;
+
+
+  //创建时间
+  var CREATE_TIME=json.CREATE_TIME;
+
+
+  //法人
+   REPRESENTATIVE_NAME=json.REPRESENTATIVE_NAME;
+    REPRESENTATIVE_NAME_DISP=json.REPRESENTATIVE_NAME_DISP;
+
+ //状态
+  var STATUS=json.STATUS;
+  //类型
+  var CORPORATE_TYPE=json.CORPORATE_TYPE;
+  
+  $(".CORPORATE_NAME_DISP").text(CORPORATE_NAME_DISP);
+
+ $(".LOGIN_NAME_DISP").text(LOGIN_NAME_DISP);
+
+  $(".CORPORATE_CODE").text(CORPORATE_CODE);
+
+  $(".CREATE_TIME").text(CREATE_TIME);
+  $(".CORPORATE_TYPE").text(CORPORATE_TYPE);
+$(".REPRESENTATIVE_NAME_DISP").text(REPRESENTATIVE_NAME_DISP);
+  if(STATUS==1){
+$(".STATUS").text("已登录");
+  }else{
+$(".STATUS").text("未登录");
+  }
+
+
+
+
+
+
+
+
+            },
+          });
+
+
+
+
+
+$(".yhzx-xxqm").bind("click", function(){
+	
+        if($(".xsType").text()=='显示全名'){
+        	$(".REPRESENTATIVE_NAME_DISP").text(REPRESENTATIVE_NAME);
+            $(".LOGIN_NAME_DISP").text(LOGIN_NAME);
+            $(".CORPORATE_NAME_DISP").text(CORPORATE_NAME);
+        	$(".xsType").text("隐藏全名");
+        }else{
+        	$(".CORPORATE_NAME_DISP").text(CORPORATE_NAME_DISP);
+ 			$(".REPRESENTATIVE_NAME_DISP").text(REPRESENTATIVE_NAME_DISP);
+ 			$(".LOGIN_NAME_DISP").text(LOGIN_NAME_DISP);
+        	$(".xsType").text("显示全名");
+        }
+    });
+
+
+function toJson(str){
+ return JSON.parse(str);
+}
+});
+</script>
+
+
+	<!--top-->
+    <div class="yhzx-top">
+		<div class="yhzx-top-main">
+	    <h2 class="left yhzx-logo"><img src="images/yhzx-logo.png" alt=""/></h2>
+		<div class="right yhzx-nav">
+		    <div class="left yhzx-nav-top">
+				<a href="#">中国政府网</a><span>|</span><a href="#">国家政务服务平台</a><span>|</span><a href="#">山西省政府门户网站</a><span>|</span><i></i><a href="#">无障碍</a><span class="CORPORATE_NAME_DISP"></span><span>|</span><a href="http://183.201.253.164:6688/sso/logout">退出</a>
+			</div>
+			<div class="left yhzx-nav-nav">
+			    <ul>
+				    <a href="#">首页</a>
+					<a href="#">省政府</a>
+					<a href="#">省长之窗</a>
+					<a href="#">要闻动态</a>
+					<a href="#">政府信息公开</a>
+					<a href="#">政务服务</a>
+					<a href="#">政民互动</a>
+					<a href="#">政府数据</a>
+					<a href="#">走进山西</a>
+				</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+	<!--top end-->
+	
+	<!--topsj-->
+    <div class="yhzx-topsj">
+		<img src="images/yhzx-left.png" alt="" class="yhzx-fwsysj" />
+		<h2 class="yhzx-logosj"><img src="images/yhzx-logosj.png" alt=""/></h2>
+		<img src="images/yhzx-search.png" alt="" class="yhzx-searchsj" />
+	</div>
+	<!--topsj end-->
+	
+	<!--pic-->
+	<div class="yhzx-top-pic yhzx-top-pic1"></div>
+	<!--pic end-->
+	
+	<!--main-->
+	<div class="yhzx-main">
+	<!--1-->
+	<div class="yhzx-main1">
+		<!--yhxx-->
+	    <div class="yhzx-yhxx left">
+			<div class="yhzx-tx"><img src="images/yhzx-tx.png" alt=""/></div>
+            <h3><span class="CORPORATE_NAME_DISP"></span></h3>
+			<a  class="yhzx-xxqm"><i></i><span class="xsType">显示全名</span></a>
+			<p>用户名：<span class="LOGIN_NAME_DISP"></span></p>
+			<p>状　态：已登录</p>
+			<ul>
+			    <a href="#">实名认证</a>
+				<a href="#">个人设置</a>
+				<a href="#">修改密码</a>
+				<a href="http://183.201.253.164:6688/sso/logout">退出登录</a>
+			</ul>
+		</div>
+		<!--yhxx end-->
+		<!--tzgg-->
+		<div class="yhzx-tzgg right">
+			<div class="yhzx-tzgg-icon"></div>
+		    <div class="picScroll-top left">
+				<div class="bd">
+					<ul class="picList">
+						<li> 
+							<a href="#" target="_blank">111</a>
+						</li>
+						<li> 
+							<a href="#" target="_blank">222</a>
+						</li>
+						<li> 
+							<a href="#" target="_blank">333</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--tzgg end-->
+		<!--cnxh-->
+		<div class="yhzx-cnxh right">
+		    <div class="tab2">
+				<h3 class="tab-title2"> 
+					<a href="javascript:;" class="up" id="thr1" onclick="setContentTab('thr',1,6)">常用服务</a> 
+					<a href="javascript:;" id="thr2" onclick="setContentTab('thr',2,6)">我的证照</a> 
+				</h3>
+				<div class="tab-conter2 block" id="con_thr_1">
+					<ul>
+						<a href="#"><img src="images/yhzx-fw1.png" alt=""/></a>
+						<a href="#"><img src="images/yhzx-fw2.png" alt=""/></a>
+						<a href="#"><img src="images/yhzx-fw3.png" alt=""/></a>
+						<a href="#"><img src="images/yhzx-fw4.png" alt=""/></a>
+					</ul>
+				</div>
+				<div class="tab-conter2" id="con_thr_2">
+					<ul>
+						<a href="#"><img src="" alt="" /></a>
+						<a href="#"><img src="" alt="" /></a>
+						<a href="#"><img src="" alt="" /></a>
+						<a href="#"><img src="" alt="" /></a>
+					</ul>
+				</div>				
+			</div>
+			
+			
+			
+			<div class="tab3">
+				<div class="tab3-tit">猜你喜欢</div>
+				<h3 class="tab-title3"> 
+					<a href="javascript:;" class="up" id="for1" onclick="setContentTab('for',1,4)">施工</a> 
+					<a href="javascript:;" id="for2" onclick="setContentTab('for',2,4)">设立</a>
+					<a href="javascript:;" id="for3" onclick="setContentTab('for',3,4)">融资</a> 
+					<a href="javascript:;" id="for4" onclick="setContentTab('for',4,4)">变更</a>
+				</h3>
+				<div class="tab-conter3 block" id="con_for_1">
+					<ul class="left">
+						<li><i></i><a href="#">1学习贯彻党的十九届四中全会精神市委宣讲团在我</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+					</ul>
+					<ul class="right">
+						<li><i></i><a href="#">1学习贯彻党的十九届四中全会精神市委宣讲团在我</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+					</ul>
+				</div>
+				<div class="tab-conter3" id="con_for_2">
+					<ul class="left">
+						<li><i></i><a href="#">2学习贯彻党的十九届四中全会精神市委宣讲团在我</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+					</ul>
+					<ul class="right">
+						<li><i></i><a href="#">2学习贯彻党的十九届四中全会精神市委宣讲团在我</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+					</ul>
+				</div>		
+				<div class="tab-conter3" id="con_for_3">
+					<ul class="left">
+						<li><i></i><a href="#">3学习贯彻党的十九届四中全会精神市委宣讲团在我</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+					</ul>
+					<ul class="right">
+						<li><i></i><a href="#">3学习贯彻党的十九届四中全会精神市委宣讲团在我</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+					</ul>
+				</div>	
+				<div class="tab-conter3" id="con_for_4">
+					<ul class="left">
+						<li><i></i><a href="#">4学习贯彻党的十九届四中全会精神市委宣讲团在我</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+					</ul>
+					<ul class="right">
+						<li><i></i><a href="#">4学习贯彻党的十九届四中全会精神市委宣讲团在我</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><i></i><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+					</ul>
+				</div>				
+			</div>
+		</div>
+		<!--cnxh end-->
+	</div>
+	<!--1 end-->
+	
+	<!--2-->
+	<div class="yhzx-main2">
+	<div class="tab yhzxfr-tab">
+        <h3 class="tab-title"> 
+            <a href="javascript:;" class="up" id="one1" onclick="setContentTab('one',1,6)"><i class="yhzx-an1"></i>企业信息</a> 
+            <a href="javascript:;" id="one2" onclick="setContentTab('one',2,6)"><i class="yhzx-an2"></i>我的办件</a> 
+            <a href="javascript:;" id="one3" onclick="setContentTab('one',3,6)"><i class="yhzx-an3"></i>我的收藏</a> 
+            <a href="javascript:;" id="one4" onclick="setContentTab('one',4,6)"><i class="yhzx-an4"></i>我的评价</a>
+			<a href="javascript:;" id="one5" onclick="setContentTab('one',5,6)"><i class="yhzx-an5"></i>我的互动</a> 
+            <a href="javascript:;" id="one6" onclick="setContentTab('one',6,6)"><i class="yhzx-an6"></i>我的足迹</a>
+        </h3>
+        <div class="tab-conter block" id="con_one_1">
+            <h3 class="tab-conter-tit"><i></i>基本信息</h3>
+			<ul class="yhzx-wdxx">
+                <li><span class="left">公司名称：<span class="CORPORATE_NAME_DISP"></span></span></li>
+                <li><span class="left">统一社会信用代码：<span class="CORPORATE_CODE"></span></span></li>
+                <li><span class="left">注册资本：</span></li>
+                <li><span class="left">类型：<span class="CORPORATE_TYPE"></span></span></li>
+                <li><span class="left">成立日期：<span class="CREATE_TIME"></span></span></li>
+                <li><span class="left">法定代表人：<span class="REPRESENTATIVE_NAME_DISP"></span></span></li>
+				<li><span class="left">营业期限：</span></li>
+                <li><span class="left">住所：</span></li>
+                <li><span class="left">经营范围：</span></li>
+            </ul>
+        </div>
+        <div class="tab-conter" id="con_one_2">
+            <div class="tab1">
+				<h3 class="tab-title1"> 
+					<a href="javascript:;" class="up" id="two1" onclick="setContentTab('two',1,6)">全部</a> 
+					<a href="javascript:;" id="two2" onclick="setContentTab('two',2,6)">待预审</a> 
+					<a href="javascript:;" id="two3" onclick="setContentTab('two',3,6)">补齐补正</a> 
+					<a href="javascript:;" id="two4" onclick="setContentTab('two',4,6)">上级动态</a>
+					<a href="javascript:;" id="two5" onclick="setContentTab('two',5,6)">基层动态</a> 
+					<a href="javascript:;" id="two6" onclick="setContentTab('two',6,6)">上级动态</a>
+				</h3>
+				<div class="tab-conter1 block" id="con_two_1">
+					<ul>
+						<li class="tab-conter1-tit"><a href="#">标题</a><span>办理状态</span><span>提交日期</span></li>
+						<li><a href="#">1我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>已办结</span><span>2020-08-08</span></li>
+						<li><a href="#">省生产力学会调研组在我县调研</a><span>已办结</span><span>2020-08-08</span></li>
+						<li><a href="#">市委督查组在我县开展专项督查</a><span>已办结</span><span>2020-08-08</span></li>
+						<li><a href="#">我县召开离退休干部2019年工作情况通报会</a><span>已办结</span><span>2020-08-08</span></li>
+						<li><a href="#">我县召开脱贫攻坚领导小组碰头会</a><span>已办结</span><span>2020-08-08</span></li>
+					</ul>
+				</div>
+				<div class="tab-conter1" id="con_two_2">
+					<ul>
+						<li><a href="#">2我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+					</ul>
+				</div>
+				<div class="tab-conter1" id="con_two_3">
+					<ul>
+						<li><a href="#">3我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+						<li><a href="#">我县召开离退休干部2019年工作情况通报会</a><span>2020-08-08</span></li>
+						<li><a href="#">我县召开脱贫攻坚领导小组碰头会</a><span>2020-08-08</span></li>
+					</ul>
+				</div>
+				<div class="tab-conter1" id="con_two_4">
+					<ul>
+						<li><a href="#">4我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+						<li><a href="#">我县召开离退休干部2019年工作情况通报会</a><span>2020-08-08</span></li>
+						<li><a href="#">我县召开脱贫攻坚领导小组碰头会</a><span>2020-08-08</span></li>
+					</ul>
+				</div>
+				<div class="tab-conter1" id="con_two_5">
+					<ul>
+						<li><a href="#">5我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+						<li><a href="#">我县召开离退休干部2019年工作情况通报会</a><span>2020-08-08</span></li>
+						<li><a href="#">我县召开脱贫攻坚领导小组碰头会</a><span>2020-08-08</span></li>
+					</ul>
+				</div>
+				<div class="tab-conter1" id="con_two_6">
+					<ul>
+						<li><a href="#">6我县召开县委县政府驻地迁址一周年暨创建全国文...</a><span>2020-08-08</span></li>
+						<li><a href="#">省生产力学会调研组在我县调研</a><span>2020-08-08</span></li>
+						<li><a href="#">市委督查组在我县开展专项督查</a><span>2020-08-08</span></li>
+						<li><a href="#">我县召开离退休干部2019年工作情况通报会</a><span>2020-08-08</span></li>
+						<li><a href="#">我县召开脱贫攻坚领导小组碰头会</a><span>2020-08-08</span></li>
+					</ul>
+				</div>
+			</div>
+        </div>
+        <div class="tab-conter" id="con_one_3">
+           333
+        </div>
+        <div class="tab-conter" id="con_one_4">
+           444
+        </div>
+		<div class="tab-conter" id="con_one_5">
+           555
+        </div>
+		<div class="tab-conter" id="con_one_6">
+           666
+        </div>
+    </div>
+	</div>
+	</div>
+    <!--2 end-->
+    <!--main end-->
+	
+	<!--mainsj-->
+	<div class="yhzx-mainsj">
+	    <div class="yhzx-yhxxsj">
+			<div class="yhzx-tx"><img src="images/yhzx-tx.png" alt="" /></div>
+			<p><span class="CORPORATE_NAME_DISP"></span></p>
+			<p><span>用户名：<span class="LOGIN_NAME_DISP"></span></span><a href="#">实名认证</a></p>
+			<p><span>状　态：已登录</span></p>			
+		</div>
+		
+		<div class="yhzx-cyfwsj">
+		    <h3>常用服务</h3>
+			<ul>
+			    <a href="#" class="yhzx-cyfwsj-an1"><i class="yhzx-cyfwan1"></i>社会保险</a>
+				<a href="#" class="yhzx-cyfwsj-an2"><i class="yhzx-cyfwan2"></i>教育培训</a>
+				<a href="#" class="yhzx-cyfwsj-an3"><i class="yhzx-cyfwan3"></i>就业创业</a>
+				<a href="#" class="yhzx-cyfwsj-an4"><i class="yhzx-cyfwan4"></i>民族宗教</a>
+			</ul>
+		</div>
+		
+		<div class="yhzx-gnsj">
+		    <ul>
+			    <a href="#"><span>企业信息</span><i></i></a>
+			    <a href="#"><span>我的办件</span><i></i></a>
+				<a href="#"><span>我的收藏</span><i></i></a>
+			    <a href="#"><span>我的评价</span><i></i></a>
+				<a href="#"><span>我的互动</span><i></i></a>
+			    <a href="#"><span>我的足迹</span><i></i></a>
+			</ul>
+		</div>
+		
+	<div class="yhzx-cnxhsj">
+		<h3>猜你喜欢</h3>
+		<div id="wrapper">
+		<div class="scroller">
+			<ul>
+				<li><a href="#">你就是一个天才</a></li>
+				<li><a href="#">你就是一个天才</a></li>
+				<li><a href="#">你就是一个天才</a></li>
+			</ul>
+			<div class="more"><i class="pull_icon"></i><span>上拉加载...</span></div>
+		</div>
+	    </div>
+    </div>
+	
+		
+	</div>
+	<!--mainsj end-->
+
+   
+<!-- footer start -->
+    <!-- footer links start -->
+    <div class="main-wrap footer-links-box mhide">
+        <dl class="width_pc footer-links">
+            <dt class="fl_pc">
+                <ul class="footer-links-items">
+                    <li>省政府部门</li>
+                    <li>市、县（区）</li>
+                    <li>国务院部门</li>
+                    <li>各省区市</li>
+                    <li>新闻媒体</li>
+                </ul>
+            </dt>
+            <dd class="fr_pc">
+                <!-- <a href="#" class="tianditu-sx">山西天地图</a> -->
+            </dd>
+        </dl>
+    </div>
+    <div class="main-wrap footer-links-inner">
+        <ul class="footer-link-inner">
+            <li><a href="http://fgw.shanxi.gov.cn" target="_blank">省发展和改革委员会</a></li>
+            <li><a href="http://jyt.shanxi.gov.cn" target="_blank">省教育厅</a></li>
+            <li><a href="http://kjt.shanxi.gov.cn" target="_blank">省科学技术厅</a></li>
+            <li><a href="http://gxt.shanxi.gov.cn" target="_blank">省工业和信息化厅</a></li>
+            <li><a href="http://gat.shanxi.gov.cn" target="_blank">省公安厅</a></li>
+            <li><a href="http://mzt.shanxi.gov.cn" target="_blank">省民政厅</a></li>
+            <li><a href="http://sft.shanxi.gov.cn" target="_blank">省司法厅</a></li>
+            <li><a href="http://czt.shanxi.gov.cn" target="_blank">省财政厅</a></li>
+            <li><a href="http://rst.shanxi.gov.cn" target="_blank">省人力资源和社会保障厅</a></li>
+            <li><a href="http://zrzyt.shanxi.gov.cn" target="_blank">省自然资源厅</a></li>
+            <li><a href="http://sthjt.shanxi.gov.cn" target="_blank">省生态环境厅</a></li>
+            <li><a href="http://zjt.shanxi.gov.cn" target="_blank">省住房和城乡建设厅</a></li>
+            <li><a href="http://jtyst.shanxi.gov.cn" target="_blank">省交通运输厅</a></li>
+            <li><a href="http://slt.shanxi.gov.cn" target="_blank">省水利厅</a></li>
+            <li><a href="http://nynct.shanxi.gov.cn" target="_blank">省农业农村厅</a></li>
+            <li><a href="http://swt.shanxi.gov.cn" target="_blank">省商务厅</a></li>
+            <li><a href="http://wlt.shanxi.gov.cn" target="_blank">省文化和旅游厅</a></li>
+            <li><a href="http://wjw.shanxi.gov.cn" target="_blank">省卫生健康委员会</a></li>
+            <li><a href="http://tyjrt.shanxi.gov.cn" target="_blank">省退役军人事务厅</a></li>
+            <li><a href="http://yjt.shanxi.gov.cn" target="_blank">省应急管理厅</a></li>
+            <li><a href="http://sjt.shanxi.gov.cn" target="_blank">省审计厅</a></li>
+            <li><a href="http://wsb.shanxi.gov.cn" target="_blank">省外事办公室</a></li>
+            <li><a href="http://gzw.shanxi.gov.cn" target="_blank">省国有资产监督管理委员会</a></li>
+            <li><a href="http://scjgj.shanxi.gov.cn" target="_blank">省市场监督管理局</a></li>
+            <li><a href="http://gdj.shanxi.gov.cn" target="_blank">省广播电视局</a></li>
+            <li><a href="http://tyj.shanxi.gov.cn" target="_blank">省体育局</a></li>
+            <li><a href="http://tjj.shanxi.gov.cn" target="_blank">省统计局</a></li>
+            <li>省政府研究室</li>
+            <li><a href="http://xzspglj.shanxi.gov.cn" target="_blank">省行政审批服务管理局</a></li>
+            <li><a href="http://xfj.shanxi.gov.cn" target="_blank">省信访局</a></li>
+            <li><a href="http://jrjgj.shanxi.gov.cn" target="_blank">省地方金融监督管理局</a></li>
+            <li><a href="http://nyj.shanxi.gov.cn" target="_blank">省能源局</a></li>
+            <li><a href="http://wwj.shanxi.gov.cn" target="_blank">省文物局</a></li>
+            <li><a href="http://rfb.shanxi.gov.cn" target="_blank">省人民防空办公室</a></li>
+            <li><a href="http://fpb.shanxi.gov.cn" target="_blank">省乡村振兴局</a></li>
+            <li><a href="http://ybj.shanxi.gov.cn" target="_blank">省医疗保障局</a></li>
+            <li><a href="http://lscbj.shanxi.gov.cn" target="_blank">省粮食和物资储备局</a></li>
+            <li><a href="http://xqyj.shanxi.gov.cn" target="_blank">省小企业发展促进局</a></li>
+            <li><a href="http://jyj.shanxi.gov.cn" target="_blank">省监狱管理局</a></li>
+            <li><a href="http://lcj.shanxi.gov.cn" target="_blank">省林业和草原局</a></li>
+            <li><a href="http://yjj.shanxi.gov.cn" target="_blank">省药品监督管理局</a></li>
+            <li><a href="http://jgj.gat.shanxi.gov.cn/" target="_blank">省公安厅交通管理局</a></li>
+            <li><a href="http://jdj.sft.shanxi.gov.cn/" target="_blank">省戒毒管理局</a></li>
+            <li><a href="http://zgq.shanxi.gov.cn" target="_blank">山西转型综改示范区管委会</a></li>
+        </ul>
+        <!-- 1 -->
+        <div class="footer-link-inner">
+            <!--太原市-->
+            <ul class="footer-link-submenu">
+                <li> <a href="http://www.taiyuan.gov.cn/" target="_blank">太原市</a> </li>
+                <li> <a href="http://www.tyxd.gov.cn/" target="_blank">小店区</a> </li>
+                <li> <a href="http://www.yingze.gov.cn/" target="_blank">迎泽区</a> </li>
+                <li> <a href="http://www.sxtyxhl.gov.cn" target="_blank">杏花岭区</a> </li>
+                <li> <a href="http://www.tyjcp.gov.cn" target="_blank">尖草坪区</a> </li>
+                <li> <a href="http://www.sxtywbl.gov.cn/" target="_blank">万柏林区</a> </li>
+                <li> <a href="http://www.jinyuan.gov.cn/" target="_blank">晋源区</a> </li>
+                <li> <a href="http://www.qx.gov.cn" target="_blank">清徐县</a> </li>
+                <li> <a href="http://www.sxyangqu.gov.cn/" target="_blank">阳曲县</a> </li>
+                <li> <a href="http://www.sxlf.gov.cn/" target="_blank">娄烦县</a> </li>
+                <li> <a href="http://www.sxgujiao.gov.cn" target="_blank">古交市</a> </li>
+            </ul>
+            <!--/太原市-->
+            <!--大同市-->
+            <ul class="footer-link-submenu">
+                <li> <a href="http://www.taiyuan.gov.cn/" target="_blank">大同市</a> </li>
+                <li> <a href="http://www.tyxd.gov.cn/" target="_blank">新荣区</a> </li>
+                <li> <a href="http://www.yingze.gov.cn/" target="_blank">平城区</a> </li>
+                <li> <a href="http://www.sxtyxhl.gov.cn" target="_blank">云冈区</a> </li>
+                <li> <a href="http://www.tyjcp.gov.cn" target="_blank">云州区</a> </li>
+                <li> <a href="http://www.sxtywbl.gov.cn/" target="_blank">阳高县</a> </li>
+                <li> <a href="http://www.jinyuan.gov.cn/" target="_blank">天镇县</a> </li>
+                <li> <a href="http://www.qx.gov.cn" target="_blank">广灵县</a> </li>
+                <li> <a href="http://www.sxyangqu.gov.cn/" target="_blank">灵丘县</a> </li>
+                <li> <a href="http://www.sxlf.gov.cn/" target="_blank">浑源县</a> </li>
+                <li> <a href="http://www.sxgujiao.gov.cn" target="_blank">左云县</a> </li>
+            </ul>
+            <!--/太原市-->
+        </div>
+        <ul class="footer-link-inner">
+            <li><a href="http://www.fmprc.gov.cn/" target="_blank">外交部</a></li>
+            <li><a href="http://www.mod.gov.cn" target="_blank">国防部</a></li>
+            <li><a href="http://www.ndrc.gov.cn/" target="_blank">国家发展和改革委员会</a></li>
+            <li><a href="http://www.moe.gov.cn/" target="_blank">教育部</a></li>
+            <li><a href="http://www.most.gov.cn/" target="_blank">科学技术部</a></li>
+            <li><a href="http://www.miit.gov.cn/" target="_blank">工业和信息化部</a></li>
+            <li><a href="http://www.seac.gov.cn/" target="_blank">国家民族事务委员会</a></li>
+            <li><a href="http://www.mps.gov.cn/" target="_blank">公安部</a></li>
+            <li>国家安全部</li>
+            <li><a href="http://www.mca.gov.cn/" target="_blank">民政部</a></li>
+            <li><a href="http://www.moj.gov.cn/" target="_blank">司法部</a></li>
+            <li><a href="http://www.mof.gov.cn" target="_blank">财政部</a></li>
+            <li><a href="http://www.mohrss.gov.cn/" target="_blank">人力资源和社会保障部</a></li>
+            <li><a href="http://www.mnr.gov.cn" target="_blank">自然资源部</a></li>
+            <li><a href="http://www.mee.gov.cn" target="_blank">生态环境部</a></li>
+            <li><a href="http://www.mohurd.gov.cn/" target="_blank">住房和城乡建设部</a></li>
+            <li><a href="http://www.mot.gov.cn/" target="_blank">交通运输部</a></li>
+            <li><a href="http://www.mwr.gov.cn/" target="_blank">水利部</a></li>
+            <li><a href="http://www.moa.gov.cn/" target="_blank">农业农村部</a></li>
+            <li><a href="http://www.mofcom.gov.cn/" target="_blank">商务部</a></li>
+            <li><a href="http://www.mct.gov.cn/" target="_blank">文化和旅游部</a></li>
+            <li><a href="http://www.nhc.gov.cn" target="_blank">国家卫生健康委员会</a></li>
+            <li><a href="http://www.mva.gov.cn" target="_blank">退役军人事务部</a></li>
+            <li><a href="http://www.mem.gov.cn" target="_blank">应急管理部</a></li>
+            <li><a href="http://www.pbc.gov.cn/" target="_blank">人民银行</a></li>
+            <li><a href="http://www.audit.gov.cn/" target="_blank">审计署</a></li>
+        </ul>
+        <ul class="footer-link-inner">
+
+
+
+            <li><a href="http://www.beijing.gov.cn/" target="_blank">北京</a></li>
+            <li><a href="http://www.tj.gov.cn/" target="_blank">天津</a></li>
+            <li><a href="http://www.hebei.gov.cn/" target="_blank">河北</a></li>
+            <li><a href="http://www.shanxi.gov.cn" target="_blank">山西</a></li>
+            <li><a href="http://www.nmg.gov.cn/" target="_blank">内蒙古</a></li>
+            <li><a href="http://www.ln.gov.cn/" target="_blank">辽宁</a></li>
+            <li><a href="http://www.jl.gov.cn/" target="_blank">吉林</a></li>
+            <li><a href="http://www.hlj.gov.cn/" target="_blank">黑龙江</a></li>
+            <li><a href="http://www.shanghai.gov.cn/" target="_blank">上海</a></li>
+            <li><a href="http://www.jiangsu.gov.cn/" target="_blank">江苏</a></li>
+            <li><a href="http://www.zj.gov.cn/" target="_blank">浙江</a></li>
+            <li><a href="http://www.ah.gov.cn/" target="_blank">安徽</a></li>
+            <li><a href="http://www.fujian.gov.cn/" target="_blank">福建</a></li>
+            <li><a href="http://www.jiangxi.gov.cn/" target="_blank">江西</a></li>
+            <li><a href="http://www.shandong.gov.cn/" target="_blank">山东</a></li>
+            <li><a href="http://www.henan.gov.cn/" target="_blank">河南</a></li>
+            <li><a href="http://www.hubei.gov.cn/" target="_blank">湖北</a></li>
+            <li><a href="http://www.hunan.gov.cn/" target="_blank">湖南</a></li>
+            <li><a href="http://www.gd.gov.cn/" target="_blank">广东</a></li>
+            <li><a href="http://www.gxzf.gov.cn/" target="_blank">广西</a></li>
+            <li><a href="http://www.hainan.gov.cn/" target="_blank">海南</a></li>
+            <li><a href="http://www.cq.gov.cn/" target="_blank">重庆</a></li>
+            <li><a href="http://www.sc.gov.cn/" target="_blank">四川</a></li>
+            <li><a href="http://www.guizhou.gov.cn" target="_blank">贵州</a></li>
+            <li><a href="http://www.yn.gov.cn/" target="_blank">云南</a></li>
+            <li><a href="http://www.xizang.gov.cn" target="_blank">西藏</a></li>
+            <li><a href="http://www.shaanxi.gov.cn/" target="_blank">陕西</a></li>
+            <li><a href="http://www.gansu.gov.cn/" target="_blank">甘肃</a></li>
+            <li><a href="http://www.nx.gov.cn/" target="_blank">宁夏</a></li>
+            <li><a href="http://www.qh.gov.cn/" target="_blank">青海</a></li>
+            <li><a href="http://www.xinjiang.gov.cn/" target="_blank">新疆</a></li>
+            <li><a href="http://www.gov.hk/sc/residents/" target="_blank">香港</a></li>
+            <li><a href="http://portal.gov.mo/web/guest/welcomepage;jsessionid=977D50BF4A7F1CE7C2C5B1D12CEE0F66"
+                    target="_blank">澳门</a></li>
+            <li>台湾</li>
+            <li><a href="http://www.xjbt.gov.cn" target="_blank">新疆生产建设兵团</a></li>
+        </ul>
+        <ul class="footer-link-inner">
+            <li><a href="http://www.xinhuanet.com" target="_blank">新华网</a></li>
+            <li><a href="http://www.people.com.cn/" target="_blank">人民网</a></li>
+            <li><a href="http://www.cctv.com" target="_blank">央视国际</a></li>
+            <li><a href="http://www.chinadaily.com.cn/" target="_blank">中国日报</a></li>
+            <li><a href="http://www.chinanews.com/" target="_blank">中国新闻社</a></li>
+            <li><a href="http://www.sxrb.com/" target="_blank">山西新闻网</a></li>
+            <li><a href="http://www.sxgov.cn" target="_blank">黄河新闻网</a></li>
+            <li><a href="http://www.banbiantian.org.cn" target="_blank">山西妇女网</a></li>
+            <li><a href="http://www.sxrtv.com" target="_blank">山西网络广播电视台</a></li>
+            <li><a href="http://www.sx.xinhuanet.com/" target="_blank">新华山西</a></li>
+            <li><a href="http://epaper.sxrb.com/index_sxrb.shtml" target="_blank">山西日报</a></li>
+            <li><a href="http://www.sxjjb.cn/" target="_blank">山西经济日报</a></li>
+        </ul>
+    </div>
+    <!-- footer links end -->
+    <!-- copyright start  -->
+    <div class="main-wrap footer-copyright-box">
+        <ul class="footer-copyright-items">
+            <li class="footer-copyright-icons fl_pc mhider">
+                <div class="copyright-icons-red">
+                    <img src="../yhzx/images/red.png">
+                </div>
+                <div class="copyright-icons-desc">
+                    <img src="../yhzx/images/jiucuo.png">
+                </div>
+                <div class="copyright-icons-asibs">
+                    <img src="../yhzx/images/wza2022.png">
+                </div>
+            </li>
+            <li class="footer-copyright-infos fl_pc">
+                <p>
+                    <a target="_blank" href="#" title="关于我们">关于我们</a>
+                    <a target="_blank" href="#" title="网站声明">网站声明</a>
+                    <a target="_blank" href="#" title="网站地图">网站地图</a>
+                    <a target="_blank" href="#" title="联系我们">联系我们</a>
+                </p>
+                <p>主办：山西省人民政府办公厅 &copy; 山西省人民政府网 版权所有</p>
+                <p>网站标识码：1400000045<a href="https://beian.miit.gov.cn/" title="晋ICP备12000773号-1"
+                        target="_blank">晋ICP备12000773号-1</a>
+                    <a target="_blank" href="#"> <img src="../yhzx/images/ba.png" width="16">晋公网安备 14010502050691号</a>
+                </p>
+            </li>
+            <li class="footer-copyright-apps fl_pc mhider">
+                <p><img src="../yhzx/images/sv_weixin.png">微信</p>
+                <p><img src="../yhzx/images/sv_weixin.png"><a href="#">微博</a></p>
+                <p><img src="../yhzx/images/sv_weixin.png"><a href="#">移动客户端</a></p>
+            </li>
+        </ul>
+    </div>
+    <!-- copyright end  -->
+    <!-- footer end -->
+    <script src="../yhzx/images/jquery.min.js"></script>
+    <script src="../yhzx/images/h5.js"></script>
+    <script src="../yhzx/images/resize.js"></script>
+    <script src="../yhzx/images/common.js"></script>
+    <script src="../yhzx/images/js.cookie.min.js"></script>
+    <script src="../yhzx/images/sxszf.slide.min.js"></script>
+    <script src="../yhzx/images/sxszf.text.slide.js"></script>
+    <!-- 仅本页调用开始 -->
+    <script src="../yhzx/images/jquery-migrate.js"></script>
+    <script src="../yhzx/images/jqprint.js"></script>
+    <script src="../yhzx/images/jquery.qrcode.js"></script>
+    <script src="../yhzx/images/qrcode.js"></script>
+    <script src="../yhzx/images/iscroll.js"></script>
+<script>
+		var myscroll = new iScroll("wrapper",{
+			onScrollMove:function(){
+				if (this.y<(this.maxScrollY)) {
+					$('.pull_icon').addClass('flip');
+					$('.pull_icon').removeClass('loading');
+					$('.more span').text('释放加载...');
+				}else{
+					$('.pull_icon').removeClass('flip loading');
+					$('.more span').text('上拉加载...')
+				}
+			},
+			onScrollEnd:function(){
+				if ($('.pull_icon').hasClass('flip')) {
+					$('.pull_icon').addClass('loading');
+					$('.more span').text('加载中...');
+					pullUpAction();
+				}
+				
+			},
+			onRefresh:function(){
+				$('.more').removeClass('flip');
+				$('.more span').text('上拉加载...');
+			}
+			
+		});
+		
+		function pullUpAction(){
+			setTimeout(function(){
+				/*$.ajax({
+					url:'/json/ay.json',
+					type:'get',
+					dataType:'json',
+					success:function(data){
+						for (var i = 0; i < 5; i++) {
+							$('.scroller ul').append(data);
+						}
+						myscroll.refresh();
+					},
+					error:function(){
+						console.log('error');
+					},
+				})*/
+				for (var i = 0; i < 5; i++) {
+					$('.scroller ul').append("<li>一只将死之猿!</li>");
+				}
+				myscroll.refresh();
+			}, 1000)
+		}
+		if ($('.scroller').height()<$('#wrapper').height()) {
+			$('.more').hide();
+			myscroll.destroy();
+		}
+
+</script>
+<script>
+	    //内容切换
+        function setContentTab(name, curr, n) {
+            for (i = 1; i <= n; i++) {
+            var menu = document.getElementById(name + i);
+            var cont = document.getElementById("con_" + name + "_" + i);
+                menu.className = i == curr ? "up" : "";
+                if (i == curr) {
+                cont.style.display = "block";
+             } 
+		else {
+            cont.style.display = "none";
+             }
+             }
+        }
+	
+	   //向上
+       jQuery(".picScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,autoPlay:true,delayTime:500,effect:"top",scroll:1,vis:1});
+</script>
+    <script type="text/javascript">
+        $('#qrcodeCanvas').qrcode({
+            text: "http://www.shanxi.gov.cn/yw/tt1/202204/t20220420_963180.shtml",
+            width: 150,
+            height: 150
+        });
+    </script>
+    <!-- 仅本页调用结束 -->
+    <p class="hide"> <a href="http://www.trs.com.cn" target="_blank">拓尔思信息技术股份有限公司</a>提供技术支持 author:silentblue.top</p>
+</body>
+
+</html>
